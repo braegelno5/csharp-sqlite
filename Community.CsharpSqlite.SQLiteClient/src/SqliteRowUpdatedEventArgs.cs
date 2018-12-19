@@ -14,10 +14,10 @@
 // distribute, sublicense, and/or sell copies of the Software, and to
 // permit persons to whom the Software is furnished to do so, subject to
 // the following conditions:
-// 
+//
 // The above copyright notice and this permission notice shall be
 // included in all copies or substantial portions of the Software.
-// 
+//
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
 // EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
 // MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
@@ -27,22 +27,21 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-using System;
 using System.Data;
 using System.Data.Common;
 
 namespace Community.CsharpSqlite.SQLiteClient
 {
-	/// <summary>
-	/// Provides data for the <see cref="SqliteDataAdapter.RowUpdated"/> event.
-	/// </summary>
-	public sealed class SqliteRowUpdatedEventArgs : RowUpdatedEventArgs
-	{
-		/// <summary>
-		/// Initializes a new instance of the <see cref="SqliteRowUpdatedEventArgs"/> class.
-		/// </summary>
-		public SqliteRowUpdatedEventArgs(DataRow row, IDbCommand command, StatementType statementType, DataTableMapping tableMapping) : base(row, command, statementType, tableMapping)
-		{
-		}
-	}
+    /// <summary>
+    /// Provides data for the <see cref="SqliteDataAdapter.RowUpdated"/> event.
+    /// </summary>
+    public sealed class SqliteRowUpdatedEventArgs : RowUpdatedEventArgs
+    {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SqliteRowUpdatedEventArgs"/> class.
+        /// </summary>
+        public SqliteRowUpdatedEventArgs(DataRow row, IDbCommand command, StatementType statementType, DataTableMapping tableMapping) : base(row, command, statementType, tableMapping)
+        {
+        }
+    }
 }

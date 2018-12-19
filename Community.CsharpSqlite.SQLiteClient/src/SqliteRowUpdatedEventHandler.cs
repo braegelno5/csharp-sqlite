@@ -1,7 +1,7 @@
 //
 // Community.CsharpSqlite.SQLiteClient.SqliteRowUpdatedEventHandler.cs
 //
-// Represents the method that will handle the RowUpdated event of a 
+// Represents the method that will handle the RowUpdated event of a
 // SqliteDataAdapter.
 //
 // Author(s): Everaldo Canuto  <everaldo_canuto@yahoo.com.br>
@@ -15,10 +15,10 @@
 // distribute, sublicense, and/or sell copies of the Software, and to
 // permit persons to whom the Software is furnished to do so, subject to
 // the following conditions:
-// 
+//
 // The above copyright notice and this permission notice shall be
 // included in all copies or substantial portions of the Software.
-// 
+//
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
 // EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
 // MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
@@ -28,15 +28,13 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-using System;
-using System.Data;
 using System.Data.Common;
 
 namespace Community.CsharpSqlite.SQLiteClient
 {
-	/// <summary>
-	/// Represents the method that will handle the <see cref="SqliteDataAdapter.RowUpdated"/> event 
-	/// of a <see cref="SqliteDataAdapter"/>.
-	/// </summary>
-	public delegate void SqliteRowUpdatedEventHandler(Object sender, RowUpdatedEventArgs e);
+    /// <summary>
+    /// Represents the method that will handle the <see cref="SqliteDataAdapter.RowUpdated"/> event
+    /// of a <see cref="SqliteDataAdapter"/>.
+    /// </summary>
+    public delegate void SqliteRowUpdatedEventHandler(object sender, RowUpdatedEventArgs e);
 }

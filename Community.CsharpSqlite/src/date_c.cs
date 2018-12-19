@@ -977,7 +977,7 @@ namespace Community.CsharpSqlite
             else
             {
                 z = sqlite3_value_text(argv[0]);
-                if (String.IsNullOrEmpty(z) || parseDateOrTime(context, z, ref p) != 0)
+                if (string.IsNullOrEmpty(z) || parseDateOrTime(context, z, ref p) != 0)
                 {
                     return 1;
                 }
@@ -985,7 +985,7 @@ namespace Community.CsharpSqlite
             for (i = 1; i < argc; i++)
             {
                 z = sqlite3_value_text(argv[i]);
-                if (String.IsNullOrEmpty(z) || parseModifier(context, z, p) != 0)
+                if (string.IsNullOrEmpty(z) || parseModifier(context, z, p) != 0)
                     return 1;
             }
             return 0;
@@ -1122,7 +1122,7 @@ namespace Community.CsharpSqlite
                 {
                     argv[i + 1].CopyTo(ref argv1[i]);
                 }
-                if (String.IsNullOrEmpty(zFmt) || isDate(context, argc - 1, argv1, ref x) != 0)
+                if (string.IsNullOrEmpty(zFmt) || isDate(context, argc - 1, argv1, ref x) != 0)
                     return;
                 db = sqlite3_context_db_handle(context);
                 for (i = 0, n = 1; i < zFmt.Length; i++, n++)

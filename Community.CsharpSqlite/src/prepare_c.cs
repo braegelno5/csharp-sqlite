@@ -60,7 +60,7 @@ namespace Community.CsharpSqlite
                     }
                     sqlite3SetString(ref pData.pzErrMsg, db,
                     "malformed database schema (%s)", zObj);
-                    if (!String.IsNullOrEmpty(zExtra))
+                    if (!string.IsNullOrEmpty(zExtra))
                     {
                         pData.pzErrMsg = sqlite3MAppendf(db, pData.pzErrMsg
                         , "%s - %s", pData.pzErrMsg, zExtra);
@@ -108,7 +108,7 @@ namespace Community.CsharpSqlite
             {
                 corruptSchema(pData, argv[0], "");
             }
-            else if (!String.IsNullOrEmpty(argv[2]))
+            else if (!string.IsNullOrEmpty(argv[2]))
             {
                 /* Call the parser to process a CREATE TABLE, INDEX or VIEW.
                 ** But because db.init.busy is set to 1, no VDBE code is generated

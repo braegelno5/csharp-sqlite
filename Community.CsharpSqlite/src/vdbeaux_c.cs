@@ -3613,7 +3613,7 @@ swapMixedEndianFloat( v );
                 // TO DO -- PASS TESTS WITH THIS ON Debug.Assert( pMem.n + ( ( pMem.flags & MEM_Zero ) != 0 ? pMem.u.nZero : 0 ) == (int)sqlite3VdbeSerialTypeLen( serial_type ) );
                 Debug.Assert(pMem.n <= nBuf);
                 if ((len = (u32)pMem.n) != 0)
-                    if (pMem.zBLOB == null && String.IsNullOrEmpty(pMem.z))
+                    if (pMem.zBLOB == null && string.IsNullOrEmpty(pMem.z))
                     {
                     }
                     else if (pMem.zBLOB != null && ((pMem.flags & MEM_Blob) != 0 || pMem.z == null))

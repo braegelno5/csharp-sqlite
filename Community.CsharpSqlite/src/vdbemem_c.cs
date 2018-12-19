@@ -74,7 +74,7 @@ namespace Community.CsharpSqlite
             || desiredEnc == SQLITE_UTF16BE);
             if ((pMem.flags & MEM_Str) == 0 || pMem.enc == desiredEnc)
             {
-                if (String.IsNullOrEmpty(pMem.z) && pMem.zBLOB != null)
+                if (string.IsNullOrEmpty(pMem.z) && pMem.zBLOB != null)
                     pMem.z = Encoding.UTF8.GetString(pMem.zBLOB, 0, pMem.zBLOB.Length);
                 return SQLITE_OK;
             }
@@ -303,11 +303,11 @@ return SQLITE_OK;
             else
             {
                 Debug.Assert((fg & MEM_Real) != 0);
-                if (Double.IsNegativeInfinity(pMem.r))
+                if (double.IsNegativeInfinity(pMem.r))
                     pMem.z = "-Inf";
-                else if (Double.IsInfinity(pMem.r))
+                else if (double.IsInfinity(pMem.r))
                     pMem.z = "Inf";
-                else if (Double.IsPositiveInfinity(pMem.r))
+                else if (double.IsPositiveInfinity(pMem.r))
                     pMem.z = "+Inf";
                 else if (pMem.r.ToString(CultureInfo.InvariantCulture).Contains("."))
                     pMem.z = pMem.r.ToString(CultureInfo.InvariantCulture).ToLower();//sqlite3_snprintf(nByte, pMem.z, "%!.15g", pMem->r);

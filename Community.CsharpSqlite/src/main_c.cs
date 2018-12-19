@@ -531,15 +531,15 @@ memset( pHash, 0, sizeof( sqlite3GlobalFunctions ) );
                     case SQLITE_CONFIG_MEMSTATUS:
                         {
                             /* Enable or disable the malloc status collection */
-                            sqlite3GlobalConfig.bMemstat = va_arg(ap, (Int32)0) != 0;
+                            sqlite3GlobalConfig.bMemstat = va_arg(ap, (int)0) != 0;
                             break;
                         }
                     case SQLITE_CONFIG_SCRATCH:
                         {
                             /* Designate a buffer for scratch memory space */
                             sqlite3GlobalConfig.pScratch = va_arg(ap, (Byte[][])null);
-                            sqlite3GlobalConfig.szScratch = va_arg(ap, (Int32)0);
-                            sqlite3GlobalConfig.nScratch = va_arg(ap, (Int32)0);
+                            sqlite3GlobalConfig.szScratch = va_arg(ap, (int)0);
+                            sqlite3GlobalConfig.nScratch = va_arg(ap, (int)0);
                             break;
                         }
 
@@ -547,8 +547,8 @@ memset( pHash, 0, sizeof( sqlite3GlobalFunctions ) );
                         {
                             /* Designate a buffer for page cache memory space */
                             sqlite3GlobalConfig.pPage = va_arg(ap, (MemPage)null);
-                            sqlite3GlobalConfig.szPage = va_arg(ap, (Int32)0);
-                            sqlite3GlobalConfig.nPage = va_arg(ap, (Int32)0);
+                            sqlite3GlobalConfig.szPage = va_arg(ap, (int)0);
+                            sqlite3GlobalConfig.nPage = va_arg(ap, (int)0);
                             break;
                         }
 
@@ -608,8 +608,8 @@ break;
 
                     case SQLITE_CONFIG_LOOKASIDE:
                         {
-                            sqlite3GlobalConfig.szLookaside = va_arg(ap, (Int32)0);
-                            sqlite3GlobalConfig.nLookaside = va_arg(ap, (Int32)0);
+                            sqlite3GlobalConfig.szLookaside = va_arg(ap, (int)0);
+                            sqlite3GlobalConfig.nLookaside = va_arg(ap, (int)0);
                             break;
                         }
 
@@ -625,12 +625,12 @@ break;
                             */
                             //typedef void(*LOGFUNC_t)(void*,int,const char);
                             sqlite3GlobalConfig.xLog = va_arg(ap, (dxLog)null);//"LOGFUNC_t" );
-                            sqlite3GlobalConfig.pLogArg = va_arg(ap, (Object)null);
+                            sqlite3GlobalConfig.pLogArg = va_arg(ap, (object)null);
                             break;
                         }
                     case SQLITE_CONFIG_URI:
                         {
-                            sqlite3GlobalConfig.bOpenUri = va_arg(ap, (Boolean)true);
+                            sqlite3GlobalConfig.bOpenUri = va_arg(ap, (bool)true);
                             break;
                         }
                     default:
@@ -756,8 +756,8 @@ break;
                     case SQLITE_DBCONFIG_LOOKASIDE:
                         {
                             byte[] pBuf = va_arg(ap, (byte[])null);   /* IMP: R-26835-10964 */
-                            int sz = va_arg(ap, (Int32)0);              /* IMP: R-47871-25994 */
-                            int cnt = va_arg(ap, (Int32)0);             /* IMP: R-04460-53386 */
+                            int sz = va_arg(ap, (int)0);              /* IMP: R-47871-25994 */
+                            int cnt = va_arg(ap, (int)0);             /* IMP: R-04460-53386 */
                             rc = setupLookaside(db, pBuf, sz, cnt);
                             break;
                         }
@@ -774,8 +774,8 @@ break;
                             {
                                 if (aFlagOp[i].op == op)
                                 {
-                                    int onoff = va_arg(ap, (Int32)0);
-                                    int pRes = va_arg(ap, (Int32)0);
+                                    int onoff = va_arg(ap, (int)0);
+                                    int pRes = va_arg(ap, (int)0);
                                     int oldFlags = db.flags;
                                     if (onoff > 0)
                                     {
@@ -1911,7 +1911,7 @@ int sqlite3Checkpoint(sqlite3 db, int iDb, int eMode, int *pnLog, int *pnCkpt){
             {
                 z = sqlite3_value_text(db.pErr);
                 //Debug.Assert( 0 == db.mallocFailed );
-                if (String.IsNullOrEmpty(z))
+                if (string.IsNullOrEmpty(z))
                 {
                     z = sqlite3ErrStr(db.errCode);
                 }
@@ -2273,7 +2273,7 @@ SQLITE_MAX_TRIGGER_DEPTH,
                     while (iIn < nUri && zUri[iIn] != '/')
                         iIn++;
 
-                    if (iIn != 7 && (iIn != 16 || String.Compare("localhost", zUri.Substring(7, 9), StringComparison.OrdinalIgnoreCase) != 0))//memcmp("localhost", &zUri[7], 9)) )
+                    if (iIn != 7 && (iIn != 16 || string.Compare("localhost", zUri.Substring(7, 9), StringComparison.OrdinalIgnoreCase) != 0))//memcmp("localhost", &zUri[7], 9)) )
                     {
                         pzErrMsg = sqlite3_mprintf("invalid uri authority: %.*s",
                             iIn - 7, zUri.Substring(7));
@@ -3275,8 +3275,8 @@ error_out:
                     */
                     case SQLITE_TESTCTRL_BITVEC_TEST:
                         {
-                            int sz = va_arg(ap, (Int32)0);
-                            int[] aProg = va_arg(ap, (Int32[])null);
+                            int sz = va_arg(ap, (int)0);
+                            int[] aProg = va_arg(ap, (int[])null);
                             rc = sqlite3BitvecBuiltinTest((u32)sz, aProg);
                             break;
                         }
@@ -3343,7 +3343,7 @@ error_out:
                     case SQLITE_TESTCTRL_ASSERT:
                         {
                             int x = 0;
-                            Debug.Assert((x = va_arg(ap, (Int32)0)) != 0);
+                            Debug.Assert((x = va_arg(ap, (int)0)) != 0);
                             rc = x;
                             break;
                         }
@@ -3377,7 +3377,7 @@ error_out:
                     */
                     case SQLITE_TESTCTRL_ALWAYS:
                         {
-                            int x = va_arg(ap, (Int32)0);
+                            int x = va_arg(ap, (int)0);
                             rc = ALWAYS(x);
                             break;
                         }
@@ -3390,7 +3390,7 @@ error_out:
                     case SQLITE_TESTCTRL_RESERVE:
                         {
                             sqlite3 db = va_arg(ap, (sqlite3)null);
-                            int x = va_arg(ap, (Int32)0);
+                            int x = va_arg(ap, (int)0);
                             sqlite3_mutex_enter(db.mutex);
                             sqlite3BtreeSetPageSize(db.aDb[0].pBt, 0, x, 0);
                             sqlite3_mutex_leave(db.mutex);
@@ -3409,7 +3409,7 @@ error_out:
                     case SQLITE_TESTCTRL_OPTIMIZATIONS:
                         {
                             sqlite3 db = va_arg(ap, (sqlite3)null);//sqlite3 db = va_arg(ap, sqlite3);
-                            int x = va_arg(ap, (Int32)0);//int x = va_arg(ap,int);
+                            int x = va_arg(ap, (int)0);//int x = va_arg(ap,int);
                             db.flags = (x & SQLITE_OptMask) | (db.flags & ~SQLITE_OptMask);
                             break;
                         }
@@ -3466,7 +3466,7 @@ error_out:
                     */
                     case SQLITE_TESTCTRL_LOCALTIME_FAULT:
                         {
-                            sqlite3GlobalConfig.bLocaltimeFault = va_arg(ap, (Boolean)true);
+                            sqlite3GlobalConfig.bLocaltimeFault = va_arg(ap, (bool)true);
                             break;
                         }
                 }

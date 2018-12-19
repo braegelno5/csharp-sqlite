@@ -4993,7 +4993,7 @@ static Pgno sqlite3PagerPagenumber( DbPage pPg )    {      return pPg.pgno;    }
             ** to by zPathname, length nPathname. Or, if this is a temporary file,
             ** leave both nPathname and zPathname set to 0.
             */
-            if (!String.IsNullOrEmpty(zFilename))
+            if (!string.IsNullOrEmpty(zFilename))
             {
                 nPathname = pVfs.mxPathname + 1;
                 zPathname = new StringBuilder(nPathname * 2);// sqlite3Malloc( nPathname * 2 );
@@ -5096,7 +5096,7 @@ memcpy(&pPager.zWal[nPathname], "-wal", 4);
 
             /* Open the pager file.
             */
-            if (!String.IsNullOrEmpty(zFilename))
+            if (!string.IsNullOrEmpty(zFilename))
             {
                 int fout = 0;                    /* VFS flags returned by xOpen() */
                 rc = sqlite3OsOpen(pVfs, zFilename, pPager.fd, vfsFlags, ref fout);

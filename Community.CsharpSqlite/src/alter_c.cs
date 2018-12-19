@@ -157,7 +157,7 @@ namespace Community.CsharpSqlite
                     } while (token == TK_SPACE);
 
                     zParent = zIdx + n < zInput.Length ? zInput.Substring(zIdx, n) : "";//sqlite3DbStrNDup(db, zIdx, n);
-                    if (String.IsNullOrEmpty(zParent))
+                    if (string.IsNullOrEmpty(zParent))
                         break;
                     sqlite3Dequote(ref zParent);
                     if (zOld.Equals(zParent, StringComparison.OrdinalIgnoreCase))
@@ -319,7 +319,7 @@ FUNCTION("sqlite_rename_parent",  3, 0, 0, renameParentFunc),
         private static string whereOrName(sqlite3 db, string zWhere, string zConstant)
         {
             string zNew;
-            if (String.IsNullOrEmpty(zWhere))
+            if (string.IsNullOrEmpty(zWhere))
             {
                 zNew = sqlite3MPrintf(db, "name=%Q", zConstant);
             }
@@ -381,7 +381,7 @@ FUNCTION("sqlite_rename_parent",  3, 0, 0, renameParentFunc),
                     }
                 }
             }
-            if (!String.IsNullOrEmpty(zWhere))
+            if (!string.IsNullOrEmpty(zWhere))
             {
                 zWhere = sqlite3MPrintf(pParse.db, "type='trigger' AND (%s)", zWhere);
                 //sqlite3DbFree( pParse.db, ref zWhere );

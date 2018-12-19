@@ -392,11 +392,11 @@ namespace Community.CsharpSqlite
 
             /* Since ArraySize(azCompileOpt) is normally in single digits, a
             ** linear search is adequate.  No need for a binary search. */
-            if (!String.IsNullOrEmpty(zOptName))
+            if (!string.IsNullOrEmpty(zOptName))
                 for (i = 0; i < ArraySize(azCompileOpt); i++)
                 {
                     int n1 = (zOptName.Length - n < azCompileOpt[i].Length) ? zOptName.Length - n : azCompileOpt[i].Length;
-                    if (String.Compare(zOptName, n, azCompileOpt[i], 0, n1, StringComparison.OrdinalIgnoreCase) == 0)
+                    if (string.Compare(zOptName, n, azCompileOpt[i], 0, n1, StringComparison.OrdinalIgnoreCase) == 0)
                         return 1;
                 }
             return 0;

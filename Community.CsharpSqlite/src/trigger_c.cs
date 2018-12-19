@@ -981,8 +981,8 @@ new VdbeOpList( OP_Next,       0, ADDR(1),  0), /* 8 */
 
         private static void transferParseError(Parse pTo, Parse pFrom)
         {
-            Debug.Assert(String.IsNullOrEmpty(pFrom.zErrMsg) || pFrom.nErr != 0);
-            Debug.Assert(String.IsNullOrEmpty(pTo.zErrMsg) || pTo.nErr != 0);
+            Debug.Assert(string.IsNullOrEmpty(pFrom.zErrMsg) || pFrom.nErr != 0);
+            Debug.Assert(string.IsNullOrEmpty(pTo.zErrMsg) || pTo.nErr != 0);
             if (pTo.nErr == 0)
             {
                 pTo.zErrMsg = pFrom.zErrMsg;
@@ -1176,12 +1176,12 @@ new VdbeOpList( OP_Next,       0, ADDR(1),  0), /* 8 */
             ** is a pointer to the sub-vdbe containing the trigger program.  */
             if (pPrg != null)
             {
-                bool bRecursive = (!String.IsNullOrEmpty(p.zName) && 0 == (pParse.db.flags & SQLITE_RecTriggers));
+                bool bRecursive = (!string.IsNullOrEmpty(p.zName) && 0 == (pParse.db.flags & SQLITE_RecTriggers));
                 sqlite3VdbeAddOp3(v, OP_Program, reg, ignoreJump, ++pParse.nMem);
                 sqlite3VdbeChangeP4(v, -1, pPrg.pProgram, P4_SUBPROGRAM);
 #if SQLITE_DEBUG
                 VdbeComment
-                    (v, "Call: %s.%s", (!String.IsNullOrEmpty(p.zName) ? p.zName : "fkey"), onErrorText(orconf));
+                    (v, "Call: %s.%s", (!string.IsNullOrEmpty(p.zName) ? p.zName : "fkey"), onErrorText(orconf));
 #endif
 
                 /* Set the P5 operand of the OP_Program instruction to non-zero if

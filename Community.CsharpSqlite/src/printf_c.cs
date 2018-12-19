@@ -396,7 +396,7 @@ const int SQLITE_PRINT_BUF_SIZE = 50;
                 width = 0;
                 if (c == '*')
                 {
-                    width = va_arg(ap, (Int32)0);
+                    width = va_arg(ap, (int)0);
                     if (width < 0)
                     {
                         flag_leftjustify = true;
@@ -423,7 +423,7 @@ const int SQLITE_PRINT_BUF_SIZE = 50;
                     c = fmt[++_fmt];
                     if (c == '*')
                     {
-                        precision = va_arg(ap, (Int32)0);
+                        precision = va_arg(ap, (int)0);
                         if (precision < 0)
                             precision = -precision;
                         c = fmt[++_fmt];
@@ -530,7 +530,7 @@ const int SQLITE_PRINT_BUF_SIZE = 50;
                             }
                             else
                             {
-                                v = (Int32)va_arg(ap, (Int32)0);
+                                v = (int)va_arg(ap, (int)0);
                             }
                             if (v < 0)
                             {
@@ -913,7 +913,7 @@ for(idx=precision, rounder=0.4999; idx>0; idx--, rounder*=0.1);
                         break;
 
                     case etCHARX:
-                        c = va_arg(ap, (Char)0);
+                        c = va_arg(ap, (char)0);
                         buf[0] = (char)c;
                         if (precision >= 0)
                         {
@@ -1019,10 +1019,10 @@ for(idx=precision, rounder=0.4999; idx>0; idx--, rounder*=0.1);
                     case etTOKEN:
                         {
                             Token pToken;
-                            if (ap[vaNEXT] is String)
+                            if (ap[vaNEXT] is string)
                             {
                                 pToken = new Token();
-                                pToken.z = va_arg(ap, (String)null);
+                                pToken.z = va_arg(ap, (string)null);
                                 pToken.n = pToken.z.Length;
                             }
                             else
@@ -1037,7 +1037,7 @@ for(idx=precision, rounder=0.4999; idx>0; idx--, rounder*=0.1);
                     case etSRCLIST:
                         {
                             SrcList pSrc = va_arg(ap, (SrcList)null);
-                            int k = va_arg(ap, (Int32)0);
+                            int k = va_arg(ap, (int)0);
                             SrcList_item pItem = pSrc.a[k];
                             Debug.Assert(k >= 0 && k < pSrc.nSrc);
                             if (pItem.zDatabase != null)

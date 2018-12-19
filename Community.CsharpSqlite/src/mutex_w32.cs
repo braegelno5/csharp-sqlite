@@ -41,7 +41,7 @@ namespace Community.CsharpSqlite
 
         public partial class sqlite3_mutex
         {
-            public Object mutex;    /* Mutex controlling the lock */
+            public object mutex;    /* Mutex controlling the lock */
             public int id;         /* Mutex type */
             public int nRef;       /* Number of enterances */
             public DWORD owner;    /* Thread holding this mutex */
@@ -51,7 +51,7 @@ namespace Community.CsharpSqlite
 
             public sqlite3_mutex()
             {
-                mutex = new Object();
+                mutex = new object();
             }
 
             public sqlite3_mutex(Mutex mutex, int id, int nRef, DWORD owner
@@ -183,7 +183,7 @@ new sqlite3_mutex( SQLITE_W32_MUTEX_INITIALIZER, 0, 0, (DWORD)0
         */
         private static long winMutex_lock = 0;
 
-        private static System.Object lockThis = new System.Object();
+        private static object lockThis = new object();
 
         private static int winMutexInit()
         {

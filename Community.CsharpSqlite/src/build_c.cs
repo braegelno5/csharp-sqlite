@@ -328,7 +328,7 @@ p.zName, P4_STATIC );
             }
         }
 
-        private static Object nestingLock = new Object();
+        private static object nestingLock = new object();
 
         /*
         ** Locate the in-memory structure that describes a particular database
@@ -984,7 +984,7 @@ goto begin_table_error;
       */
             if (!IN_DECLARE_VTAB(pParse))
             {
-                String zDb = db.aDb[iDb].zName;
+                string zDb = db.aDb[iDb].zName;
                 if (SQLITE_OK != sqlite3ReadSchema(pParse))
                 {
                     goto begin_table_error;
@@ -1842,9 +1842,9 @@ goto begin_table_error;
             {
                 int n;
                 Vdbe v;
-                String zType = "";    /* "view" or "table" */
-                String zType2 = "";    /* "VIEW" or "TABLE" */
-                String zStmt = "";    /* Text of the CREATE TABLE or CREATE VIEW statement */
+                string zType = "";    /* "view" or "table" */
+                string zType2 = "";    /* "VIEW" or "TABLE" */
+                string zStmt = "";    /* Text of the CREATE TABLE or CREATE VIEW statement */
 
                 v = sqlite3GetVdbe(pParse);
                 if (NEVER(v == null))
@@ -3805,7 +3805,7 @@ goto exit_drop_index;
             //  return null;
             //}
             pItem = pList.a[pList.nSrc - 1];
-            if (pDatabase != null && String.IsNullOrEmpty(pDatabase.z))
+            if (pDatabase != null && string.IsNullOrEmpty(pDatabase.z))
             {
                 pDatabase = null;
             }

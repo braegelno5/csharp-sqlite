@@ -277,7 +277,7 @@ namespace Community.CsharpSqlite
             else
             {
                 z = sqlite3_value_text(argv[0]);
-                if (String.IsNullOrEmpty(z))
+                if (string.IsNullOrEmpty(z))
                     return;
                 len = 0;
                 if (p1 < 0)

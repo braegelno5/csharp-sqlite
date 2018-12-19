@@ -2642,9 +2642,9 @@ int isTemp = 0;
             /* The main DB, main journal, WAL file and master journal are never
             ** automatically deleted. Nor are they ever temporary files.  */
             //Debug.Assert( ( !isDelete && !String.IsNullOrEmpty(zName) ) || eType != SQLITE_OPEN_MAIN_DB );
-            Debug.Assert((!isDelete && !String.IsNullOrEmpty(zName)) || eType != SQLITE_OPEN_MAIN_JOURNAL);
-            Debug.Assert((!isDelete && !String.IsNullOrEmpty(zName)) || eType != SQLITE_OPEN_MASTER_JOURNAL);
-            Debug.Assert((!isDelete && !String.IsNullOrEmpty(zName)) || eType != SQLITE_OPEN_WAL);
+            Debug.Assert((!isDelete && !string.IsNullOrEmpty(zName)) || eType != SQLITE_OPEN_MAIN_JOURNAL);
+            Debug.Assert((!isDelete && !string.IsNullOrEmpty(zName)) || eType != SQLITE_OPEN_MASTER_JOURNAL);
+            Debug.Assert((!isDelete && !string.IsNullOrEmpty(zName)) || eType != SQLITE_OPEN_WAL);
 
             /* Assert that the upper layer has set one of the "file-type" flags. */
             Debug.Assert(eType == SQLITE_OPEN_MAIN_DB || eType == SQLITE_OPEN_TEMP_DB
@@ -2661,7 +2661,7 @@ int isTemp = 0;
             /* If the second argument to this function is NULL, generate a
             ** temporary file name to use
             */
-            if (String.IsNullOrEmpty(zUtf8Name))
+            if (string.IsNullOrEmpty(zUtf8Name))
             {
                 Debug.Assert(isDelete && !isOpenJournal);
                 rc = getTempname(MAX_PATH + 1, zTmpname);
@@ -3241,7 +3241,7 @@ return SQLITE_OK;
             /* If this path name begins with "/X:", where "X" is any alphabetic
             ** character, discard the initial "/" from the pathname.
             */
-            if (zRelative[0] == '/' && Char.IsLetter(zRelative[1]) && zRelative[2] == ':')
+            if (zRelative[0] == '/' && char.IsLetter(zRelative[1]) && zRelative[2] == ':')
             {
                 zRelative = zRelative.Substring(1);
             }

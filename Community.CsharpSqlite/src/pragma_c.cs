@@ -473,7 +473,7 @@ new EncName( null, 0 )
             }
 
             zLeft = sqlite3NameFromToken(db, pId);
-            if (String.IsNullOrEmpty(zLeft))
+            if (string.IsNullOrEmpty(zLeft))
                 return;
             if (minusFlag != 0)
             {
@@ -789,7 +789,7 @@ new VdbeOpList( OP_ResultRow,   1, 1,        0),
             {
                 Pager pPager = sqlite3BtreePager(pDb.pBt);
                 i64 iLimit = -2;
-                if (!String.IsNullOrEmpty(zRight))
+                if (!string.IsNullOrEmpty(zRight))
                 {
                     sqlite3Atoi64(zRight, ref iLimit, 1000000, SQLITE_UTF8);
                     if (iLimit < -1)
@@ -1831,17 +1831,17 @@ new VdbeOpList( OP_ResultRow,       1,  1,  0)
 
 #if SQLITE_HAS_CODEC
                   // needed to support key/rekey/hexrekey with pragma cmds
-                  if (zLeft.Equals("key", StringComparison.OrdinalIgnoreCase) && !String.IsNullOrEmpty(zRight))
+                  if (zLeft.Equals("key", StringComparison.OrdinalIgnoreCase) && !string.IsNullOrEmpty(zRight))
             {
                 sqlite3_key(db, zRight, sqlite3Strlen30(zRight));
             }
             else
-                    if (zLeft.Equals("rekey", StringComparison.OrdinalIgnoreCase) && !String.IsNullOrEmpty(zRight))
+                    if (zLeft.Equals("rekey", StringComparison.OrdinalIgnoreCase) && !string.IsNullOrEmpty(zRight))
             {
                 sqlite3_rekey(db, zRight, sqlite3Strlen30(zRight));
             }
             else
-                      if (!String.IsNullOrEmpty(zRight) && (zLeft.Equals("hexkey", StringComparison.OrdinalIgnoreCase) ||
+                      if (!string.IsNullOrEmpty(zRight) && (zLeft.Equals("hexkey", StringComparison.OrdinalIgnoreCase) ||
                       zLeft.Equals("hexrekey", StringComparison.OrdinalIgnoreCase)))
             {
                 StringBuilder zKey = new StringBuilder(40);
@@ -1873,7 +1873,7 @@ new VdbeOpList( OP_ResultRow,       1,  1,  0)
                                                                     if (zLeft.Equals("activate_extensions", StringComparison.OrdinalIgnoreCase))
             {
 #if SQLITE_HAS_CODEC
-                if (!String.IsNullOrEmpty(zRight) && zRight.Length > 4 && sqlite3StrNICmp(zRight, "see-", 4) == 0)
+                if (!string.IsNullOrEmpty(zRight) && zRight.Length > 4 && sqlite3StrNICmp(zRight, "see-", 4) == 0)
                 {
                     sqlite3_activate_see(zRight.Substring(4));
                 }

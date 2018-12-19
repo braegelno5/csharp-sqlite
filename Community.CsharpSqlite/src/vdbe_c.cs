@@ -2953,7 +2953,7 @@ c = sqlite3VdbeIntValue(pIn1)!=0;
                             char cAff;               /* A single character of affinity */
 
                             zAffinity = pOp.p4.z;
-                            Debug.Assert(!String.IsNullOrEmpty(zAffinity));
+                            Debug.Assert(!string.IsNullOrEmpty(zAffinity));
                             Debug.Assert(zAffinity.Length <= pOp.p2);//zAffinity[pOp.p2] == 0
                                                                      //pIn1 = aMem[pOp.p1];
                             for (int zI = 0; zI < zAffinity.Length; zI++)// while( (cAff = *(zAffinity++))!=0 ){
@@ -5621,7 +5621,7 @@ const int MAX_ROWID = i32.MaxValue;//#   define MAX_ROWID 0x7fffffff
                                 zSql = sqlite3MPrintf(db,
                                 "SELECT name, rootpage, sql FROM '%q'.%s WHERE %s ORDER BY rowid",
                                 db.aDb[iDb].zName, zMaster, pOp.p4.z);
-                                if (String.IsNullOrEmpty(zSql))
+                                if (string.IsNullOrEmpty(zSql))
                                 {
                                     rc = SQLITE_NOMEM;
                                 }
@@ -5755,7 +5755,7 @@ const int MAX_ROWID = i32.MaxValue;//#   define MAX_ROWID 0x7fffffff
                             {
                                 Debug.Assert(z == "");
                             }
-                            else if (String.IsNullOrEmpty(z))
+                            else if (string.IsNullOrEmpty(z))
                             {
                                 goto no_mem;
                             }
@@ -6945,7 +6945,7 @@ break;
                             string zTrace;
                             string z;
 
-                            if (db.xTrace != null && !String.IsNullOrEmpty(zTrace = (pOp.p4.z != null ? pOp.p4.z : p.zSql)))
+                            if (db.xTrace != null && !string.IsNullOrEmpty(zTrace = (pOp.p4.z != null ? pOp.p4.z : p.zSql)))
                             {
                                 z = sqlite3VdbeExpandSql(p, zTrace);
                                 db.xTrace(db.pTraceArg, z);

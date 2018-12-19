@@ -372,7 +372,7 @@ rc = isnan(x);
         private static bool sqlite3AtoF(string z, ref double pResult, int length, u8 enc)
         {
 #if !SQLITE_OMIT_FLOATING_POINT
-            if (String.IsNullOrEmpty(z))
+            if (string.IsNullOrEmpty(z))
             {
                 pResult = 0;
                 return false;
@@ -816,7 +816,7 @@ return !sqlite3Atoi64(z, pResult, length, enc);
         private static int sqlite3Atoi(string z)
         {
             int x = 0;
-            if (!String.IsNullOrEmpty(z))
+            if (!string.IsNullOrEmpty(z))
                 sqlite3GetInt32(z, ref x);
             return x;
         }

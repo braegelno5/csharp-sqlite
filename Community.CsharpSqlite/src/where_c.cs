@@ -883,7 +883,7 @@ public WhereTerm[] aStatic = new WhereTerm[1];    /* Initial static space for a[
             {
                 z = pRight.u.zToken;
             }
-            if (!String.IsNullOrEmpty(z))
+            if (!string.IsNullOrEmpty(z))
             {
                 cnt = 0;
                 while (cnt < z.Length && (c = z[cnt]) != 0 && c != wc[0] && c != wc[1] && c != wc[2])
@@ -1732,7 +1732,7 @@ public WhereTerm[] aStatic = new WhereTerm[1];    /* Initial static space for a[
             /* Argument pIdx must either point to a 'real' named index structure,
             ** or an index structure allocated on the stack by bestBtreeIndex() to
             ** represent the rowid index that is part of every table.  */
-            Debug.Assert(!String.IsNullOrEmpty(pIdx.zName) || (pIdx.nColumn == 1 && pIdx.aiColumn[0] == -1));
+            Debug.Assert(!string.IsNullOrEmpty(pIdx.zName) || (pIdx.nColumn == 1 && pIdx.aiColumn[0] == -1));
 
             /* Match terms of the ORDER BY clause against columns of
             ** the index.
@@ -1764,7 +1764,7 @@ public WhereTerm[] aStatic = new WhereTerm[1];    /* Initial static space for a[
                 {
                     pColl = db.pDfltColl;
                 }
-                if (!String.IsNullOrEmpty(pIdx.zName) && i < pIdx.nColumn)
+                if (!string.IsNullOrEmpty(pIdx.zName) && i < pIdx.nColumn)
                 {
                     iColumn = pIdx.aiColumn[i];
                     if (iColumn == pIdx.pTable.iPKey)
@@ -2505,7 +2505,7 @@ WhereCost pCost            /* Lowest cost query plan */
                 //  pParse.db.mallocFailed = 1;
                 //}
                 // else
-                if (String.IsNullOrEmpty(pVtab.zErrMsg))
+                if (string.IsNullOrEmpty(pVtab.zErrMsg))
                 {
                     sqlite3ErrorMsg(pParse, "%s", sqlite3ErrStr(rc));
                 }

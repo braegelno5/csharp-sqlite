@@ -289,7 +289,7 @@ namespace Community.CsharpSqlite
                             ** the default collation sequence for the column, this index is
                             ** unusable. Bail out early in this case.  */
                             zDfltColl = pParent.aCol[iCol].zColl;
-                            if (String.IsNullOrEmpty(zDfltColl))
+                            if (string.IsNullOrEmpty(zDfltColl))
                             {
                                 zDfltColl = "BINARY";
                             }
@@ -1047,7 +1047,7 @@ namespace Community.CsharpSqlite
                             for (iKey = 0; iKey < pTab.nCol; iKey++)
                             {
                                 Column pCol = pTab.aCol[iKey];
-                                if ((!String.IsNullOrEmpty(zKey) ? pCol.zName.Equals(zKey, StringComparison.OrdinalIgnoreCase) : pCol.isPrimKey != 0))
+                                if ((!string.IsNullOrEmpty(zKey) ? pCol.zName.Equals(zKey, StringComparison.OrdinalIgnoreCase) : pCol.isPrimKey != 0))
                                 {
                                     if (aChange[iKey] >= 0)
                                         return 1;

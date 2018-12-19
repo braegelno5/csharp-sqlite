@@ -233,7 +233,7 @@ static void CODEC_TRACE( string T, params object[] ap ) { if ( sqlite3PagerTrace
         {
             ctx.pass = null; // codec_free( ctx.pass, ctx.pass_sz );
             ctx.pass_sz = nKey;
-            if (!String.IsNullOrEmpty(zKey) && nKey > 0)
+            if (!string.IsNullOrEmpty(zKey) && nKey > 0)
             {
                 //ctx.pass = sqlite3Malloc(nKey);
                 //if(ctx.pass == null) return SQLITE_NOMEM;

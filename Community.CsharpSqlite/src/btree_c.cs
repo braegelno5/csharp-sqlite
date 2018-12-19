@@ -2078,7 +2078,7 @@ static int cellSize(MemPage pPage, int iCell) { return -1; }
             byte[] zDbHeader = new byte[100]; /* Database header content */
 
             /* True if opening an ephemeral, temporary database */
-            bool isTempDb = String.IsNullOrEmpty(zFilename);//zFilename==0 || zFilename[0]==0;
+            bool isTempDb = string.IsNullOrEmpty(zFilename);//zFilename==0 || zFilename[0]==0;
 
             /* Set the variable isMemdb to true for an in-memory database, or
             ** false for a file-based database.

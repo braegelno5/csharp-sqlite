@@ -14,10 +14,10 @@
 // distribute, sublicense, and/or sell copies of the Software, and to
 // permit persons to whom the Software is furnished to do so, subject to
 // the following conditions:
-// 
+//
 // The above copyright notice and this permission notice shall be
 // included in all copies or substantial portions of the Software.
-// 
+//
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
 // EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
 // MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
@@ -27,72 +27,69 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-using System;
-using System.Data;
 using System.Data.Common;
 
 namespace Community.CsharpSqlite.SQLiteClient
 {
-  public class SqliteClientFactory : DbProviderFactory
-  {
-    public static SqliteClientFactory Instance = null;
-    public static object lockStatic = new object();
-
-    private SqliteClientFactory()
+    public class SqliteClientFactory : DbProviderFactory
     {
-    }
+        public static SqliteClientFactory Instance = null;
+        public static object lockStatic = new object();
 
-    static SqliteClientFactory()
-    {
-      lock ( lockStatic )
-      {
-        if ( Instance == null )
-          Instance = new SqliteClientFactory();
-      }
-    }
+        private SqliteClientFactory()
+        {
+        }
 
-    public override bool CanCreateDataSourceEnumerator
-    {
-      get
-      {
-        return false;
-      }
-    }
+        static SqliteClientFactory()
+        {
+            lock (lockStatic)
+            {
+                if (Instance == null)
+                    Instance = new SqliteClientFactory();
+            }
+        }
 
-    public override DbCommand CreateCommand()
-    {
-      return new SqliteCommand();
-    }
+        public override bool CanCreateDataSourceEnumerator
+        {
+            get
+            {
+                return false;
+            }
+        }
 
-    public override DbCommandBuilder CreateCommandBuilder()
-    {
-      return new SqliteCommandBuilder();
-    }
+        public override DbCommand CreateCommand()
+        {
+            return new SqliteCommand();
+        }
 
-    public override DbConnection CreateConnection()
-    {
-      return new SqliteConnection();
-    }
+        public override DbCommandBuilder CreateCommandBuilder()
+        {
+            return new SqliteCommandBuilder();
+        }
 
-    public override DbDataAdapter CreateDataAdapter()
-    {
-      return new SqliteDataAdapter();
-    }
+        public override DbConnection CreateConnection()
+        {
+            return new SqliteConnection();
+        }
 
-    public override DbDataSourceEnumerator CreateDataSourceEnumerator()
-    {
-      return new SqliteDataSourceEnumerator();
-    }
+        public override DbDataAdapter CreateDataAdapter()
+        {
+            return new SqliteDataAdapter();
+        }
 
-    public override DbParameter CreateParameter()
-    {
-      return new SqliteParameter();
-    }
+        public override DbDataSourceEnumerator CreateDataSourceEnumerator()
+        {
+            return new SqliteDataSourceEnumerator();
+        }
 
-    public override DbConnectionStringBuilder CreateConnectionStringBuilder()
-    {
-      return new SqliteConnectionStringBuilder();
-    }
-  }
+        public override DbParameter CreateParameter()
+        {
+            return new SqliteParameter();
+        }
 
+        public override DbConnectionStringBuilder CreateConnectionStringBuilder()
+        {
+            return new SqliteConnectionStringBuilder();
+        }
+    }
 }

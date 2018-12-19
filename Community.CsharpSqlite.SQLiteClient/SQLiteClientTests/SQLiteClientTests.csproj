@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\TestDriver_src\SQLiteClientTestDriver.cs" Link="SQLiteClientTestDriver.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Community.CsharpSqlite\Community.CsharpSqlite.csproj" />
+    <ProjectReference Include="..\Community.CsharpSqlite.SQLiteClient.csproj" />
+  </ItemGroup>
+
+</Project>

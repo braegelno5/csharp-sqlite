@@ -598,7 +598,7 @@ namespace Community.CsharpSqlite
 
                     for (iCol = 0; iCol < pTab.nCol; iCol++)
                     {
-                        if (String.IsNullOrEmpty(pTab.aCol[iCol].zType))
+                        if (string.IsNullOrEmpty(pTab.aCol[iCol].zType))
                             continue;
                         StringBuilder zType = new StringBuilder(pTab.aCol[iCol].zType);
                         int nType;
@@ -1260,7 +1260,7 @@ namespace Community.CsharpSqlite
                         else
                         {
                             Debug.Assert(p.pTab == null || (p.pTab.tabFlags & TF_Virtual) != 0);
-                            p.pVTable.bConstraint = (Byte)va_arg(ap, (Int32)0);
+                            p.pVTable.bConstraint = (byte)va_arg(ap, (int)0);
                         }
                         break;
                     }

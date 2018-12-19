@@ -113,7 +113,7 @@ new _aTable( "sqlite_stat2", "tbl,idx,sampleno,sample" ),
                     ** entire contents of the table. */
                     aRoot[i] = pStat.tnum;
                     sqlite3TableLock(pParse, iDb, aRoot[i], 1, zTab);
-                    if (!String.IsNullOrEmpty(zWhere))
+                    if (!string.IsNullOrEmpty(zWhere))
                     {
                         sqlite3NestedParse(pParse,
                         "DELETE FROM %Q.%s WHERE %s=%Q", pDb.zName, zTab, zWhereType, zWhere
@@ -637,7 +637,7 @@ return;
             {
                 return 0;
             }
-            if (!String.IsNullOrEmpty(argv[1]))
+            if (!string.IsNullOrEmpty(argv[1]))
             {
                 pIndex = sqlite3FindIndex(pInfo.db, argv[1], pInfo.zDatabase);
             }

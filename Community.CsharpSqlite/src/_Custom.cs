@@ -53,7 +53,7 @@ namespace Community.CsharpSqlite
   catch { }
   return result;
 #else
-            return (Int32.TryParse(inStr.Substring(0, i), out result) ? result : 0);
+            return (int.TryParse(inStr.Substring(0, i), out result) ? result : 0);
 #endif
         }
 
@@ -152,7 +152,7 @@ namespace Community.CsharpSqlite
             if (B.Length < Limit)
                 return +1;
             int rc;
-            if ((rc = String.Compare(A, 0, B, 0, Limit, StringComparison.Ordinal)) == 0)
+            if ((rc = string.Compare(A, 0, B, 0, Limit, StringComparison.Ordinal)) == 0)
                 return 0;
             return rc < 0 ? -1 : +1;
         }
@@ -181,7 +181,7 @@ namespace Community.CsharpSqlite
             zRegex = sqlite3_value_text(argv[0]);
             zTest = sqlite3_value_text(argv[1]);
 
-            if (zTest == null || String.IsNullOrEmpty(zRegex))
+            if (zTest == null || string.IsNullOrEmpty(zRegex))
             {
                 sqlite3_result_int(context, 0);
                 return;
@@ -197,7 +197,7 @@ namespace Community.CsharpSqlite
         // ----------------------------
         // ** Convertion routines
         // ----------------------------
-        private static Object lock_va_list = new Object();
+        private static object lock_va_list = new object();
 
         private static string vaFORMAT;
         private static int vaNEXT;
@@ -208,17 +208,17 @@ namespace Community.CsharpSqlite
             vaNEXT = 0;
         }
 
-        private static Boolean va_arg(object[] ap, Boolean sysType)
+        private static bool va_arg(object[] ap, bool sysType)
         {
             return Convert.ToBoolean(ap[vaNEXT++]);
         }
 
-        private static Byte[] va_arg(object[] ap, Byte[] sysType)
+        private static byte[] va_arg(object[] ap, byte[] sysType)
         {
-            return (Byte[])ap[vaNEXT++];
+            return (byte[])ap[vaNEXT++];
         }
 
-        private static Byte[][] va_arg(object[] ap, Byte[][] sysType)
+        private static byte[][] va_arg(object[] ap, byte[][] sysType)
         {
             if (ap[vaNEXT] == null)
             {
@@ -229,13 +229,13 @@ namespace Community.CsharpSqlite
             }
             else
             {
-                return (Byte[][])ap[vaNEXT++];
+                return (byte[][])ap[vaNEXT++];
             }
         }
 
-        private static Char va_arg(object[] ap, Char sysType)
+        private static char va_arg(object[] ap, char sysType)
         {
-            if (ap[vaNEXT] is Int32 && (int)ap[vaNEXT] == 0)
+            if (ap[vaNEXT] is int && (int)ap[vaNEXT] == 0)
             {
                 vaNEXT++;
                 return (char)'0';
@@ -255,7 +255,7 @@ namespace Community.CsharpSqlite
             }
         }
 
-        private static Double va_arg(object[] ap, Double sysType)
+        private static double va_arg(object[] ap, double sysType)
         {
             return Convert.ToDouble(ap[vaNEXT++]);
         }
@@ -267,21 +267,21 @@ namespace Community.CsharpSqlite
 
         private static Int64 va_arg(object[] ap, Int64 sysType)
         {
-            if (ap[vaNEXT] is System.Int64)
+            if (ap[vaNEXT] is long)
                 return Convert.ToInt64(ap[vaNEXT++]);
             else
                 return (Int64)(ap[vaNEXT++].GetHashCode());
         }
 
-        private static Int32 va_arg(object[] ap, Int32 sysType)
+        private static int va_arg(object[] ap, int sysType)
         {
-            if (Convert.ToInt64(ap[vaNEXT]) > 0 && (Convert.ToUInt32(ap[vaNEXT]) > Int32.MaxValue))
-                return (Int32)(Convert.ToUInt32(ap[vaNEXT++]) - System.UInt32.MaxValue - 1);
+            if (Convert.ToInt64(ap[vaNEXT]) > 0 && (Convert.ToUInt32(ap[vaNEXT]) > int.MaxValue))
+                return (int)(Convert.ToUInt32(ap[vaNEXT++]) - System.UInt32.MaxValue - 1);
             else
-                return (Int32)Convert.ToInt32(ap[vaNEXT++]);
+                return (int)Convert.ToInt32(ap[vaNEXT++]);
         }
 
-        private static Int32[] va_arg(object[] ap, Int32[] sysType)
+        private static int[] va_arg(object[] ap, int[] sysType)
         {
             if (ap[vaNEXT] == null)
             {
@@ -292,7 +292,7 @@ namespace Community.CsharpSqlite
             }
             else
             {
-                return (Int32[])ap[vaNEXT++];
+                return (int[])ap[vaNEXT++];
             }
         }
 
@@ -301,9 +301,9 @@ namespace Community.CsharpSqlite
             return (MemPage)ap[vaNEXT++];
         }
 
-        private static Object va_arg(object[] ap, Object sysType)
+        private static object va_arg(object[] ap, object sysType)
         {
-            return (Object)ap[vaNEXT++];
+            return (object)ap[vaNEXT++];
         }
 
         private static sqlite3 va_arg(object[] ap, sqlite3 sysType)
@@ -326,7 +326,7 @@ namespace Community.CsharpSqlite
             return (SrcList)ap[vaNEXT++];
         }
 
-        private static String va_arg(object[] ap, String sysType)
+        private static string va_arg(object[] ap, string sysType)
         {
             if (ap.Length < vaNEXT - 1 || ap[vaNEXT] == null)
             {
@@ -335,7 +335,7 @@ namespace Community.CsharpSqlite
             }
             else
             {
-                if (ap[vaNEXT] is Byte[])
+                if (ap[vaNEXT] is byte[])
                     if (Encoding.UTF8.GetString((byte[])ap[vaNEXT], 0, ((byte[])ap[vaNEXT]).Length) == "\0")
                     {
                         vaNEXT++;
@@ -343,17 +343,17 @@ namespace Community.CsharpSqlite
                     }
                     else
                         return Encoding.UTF8.GetString((byte[])ap[vaNEXT], 0, ((byte[])ap[vaNEXT++]).Length);
-                else if (ap[vaNEXT] is Int32)
+                else if (ap[vaNEXT] is int)
                 {
                     vaNEXT++;
                     return null;
                 }
                 else if (ap[vaNEXT] is StringBuilder)
-                    return (String)ap[vaNEXT++].ToString();
-                else if (ap[vaNEXT] is Char)
-                    return ((Char)ap[vaNEXT++]).ToString();
+                    return (string)ap[vaNEXT++].ToString();
+                else if (ap[vaNEXT] is char)
+                    return ((char)ap[vaNEXT++]).ToString();
                 else
-                    return (String)ap[vaNEXT++];
+                    return (string)ap[vaNEXT++];
             }
         }
 
@@ -379,7 +379,7 @@ namespace Community.CsharpSqlite
             }
         }
 
-        private static UInt64 va_arg(object[] ap, UInt64 sysType)
+        private static ulong va_arg(object[] ap, ulong sysType)
         {
 #if SQLITE_WINRT
   Type t = ap[vaNEXT].GetType();
@@ -388,11 +388,11 @@ namespace Community.CsharpSqlite
             if (ap[vaNEXT].GetType().IsClass)
 #endif
             {
-                return (UInt64)ap[vaNEXT++].GetHashCode();
+                return (ulong)ap[vaNEXT++].GetHashCode();
             }
             else
             {
-                return (UInt64)Convert.ToUInt64(ap[vaNEXT++]);
+                return (ulong)Convert.ToUInt64(ap[vaNEXT++]);
             }
         }
 
@@ -594,7 +594,7 @@ namespace Community.CsharpSqlite
             return location;
         }
 
-        private static void EnterCriticalSection(Object mtx)
+        private static void EnterCriticalSection(object mtx)
         {
             //long mid = mtx.GetHashCode();
             //int tid = Thread.CurrentThread.ManagedThreadId;
@@ -603,17 +603,17 @@ namespace Community.CsharpSqlite
             Monitor.Enter(mtx);
         }
 
-        private static void InitializeCriticalSection(Object mtx)
+        private static void InitializeCriticalSection(object mtx)
         {
             //Debug.WriteLine(String.Format( "{2}: +InitializeCriticalSection; Mutex {0} Thread {1}", mtx.GetHashCode(), Thread.CurrentThread.ManagedThreadId, System.DateTime.Now.Ticks ));
         }
 
-        private static void DeleteCriticalSection(Object mtx)
+        private static void DeleteCriticalSection(object mtx)
         {
             //Debug.WriteLine(String.Format( "{2}: +DeleteCriticalSection; Mutex {0} Thread {1}", mtx.GetHashCode(), Thread.CurrentThread.ManagedThreadId, System.DateTime.Now.Ticks) );
         }
 
-        private static void LeaveCriticalSection(Object mtx)
+        private static void LeaveCriticalSection(object mtx)
         {
             //Debug.WriteLine(String.Format("{2}: +LeaveCriticalSection; Mutex {0} Thread {1}", mtx.GetHashCode(), Thread.CurrentThread.ManagedThreadId, System.DateTime.Now.Ticks ));
             Monitor.Exit(mtx);
